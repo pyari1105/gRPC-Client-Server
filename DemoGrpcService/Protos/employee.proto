@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+option csharp_namespace = "DemoGrpcService";
+
+package employee;
+
+service EmployeeDetail{
+
+//Create
+rpc CreateEmployee (CreateEmployeeRequest) returns (CreateEmployeeResponse){}
+
+//Get
+rpc GetEmployee (GetRequest) returns (GetResponse){}
+
+//Get All
+rpc GetAllEmployees (GetAllRequest) returns (GetAllResponse){}
+
+//Update
+rpc UpdateEmployee (UpdateRequest) returns (UpdateResponse){}
+
+//Delete
+rpc DeleteEmployee (DeleteRequest) returns (DeleteResponse){}
+
+}
+
+message CreateEmployeeRequest{
+	string Name = 1;
+	int32 Age = 2;
+	string Address = 3;
+}
+message CreateEmployeeResponse{
+	string Id = 1;
+}
+
+message GetRequest{
+	string Id = 1;
+}
+
+message GetResponse{
+	string Id = 1;
+	string Name = 2;
+	int32 Age = 3;
+	string Address = 4;
+}
+
+message GetAllRequest{}
+
+message GetAllResponse{
+	repeated  GetResponse employees = 1;
+}
+
+message UpdateRequest{
+	string Id = 1;
+	string Name = 2;
+	int32 Age = 3;
+	string Address = 4;
+}
+ message UpdateResponse{
+	 string Id = 1;
+ }
+
+ message DeleteRequest{
+	 string Id =1;
+ }
+ message DeleteResponse{
+	string Id =1;
+ }
