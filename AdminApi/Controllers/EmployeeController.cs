@@ -54,8 +54,9 @@ namespace AdminApi.Controllers
         }
 
         [HttpDelete("deleteEmployee")]
-        public DeleteResponse DeleteEmployee(DeleteRequest request)
+        public DeleteResponse DeleteEmployee(string Id)
         {
+            DeleteRequest request = new DeleteRequest() { Id = Id };
             var response = _client.DeleteEmployee(request);
 
             return response;
