@@ -20,10 +20,43 @@ namespace AdminApi.Controllers
         }
 
         [HttpGet("getAllEmployees")]
-        public GetAllResponse GetOfferListAsync()
+        public GetAllResponse GetAllEmployees()
         {
             GetAllRequest request = new GetAllRequest();
             var response =  _client.GetAllEmployees(request);
+
+            return response;
+        }
+
+        [HttpGet("getEmployeeById")]
+        public GetResponse GetEmployeeById(string id)
+        {
+            GetRequest request = new GetRequest() { Id = id };
+            var response = _client.GetEmployee(request);
+
+            return response;
+        }
+
+        [HttpPost("createEmployee")]
+        public CreateEmployeeResponse CreateEmployee(CreateEmployeeRequest request)
+        {
+            var response = _client.CreateEmployee(request);
+
+            return response;
+        }
+
+        [HttpPut("updateEmployee")]
+        public UpdateResponse UpdateEmployee(UpdateRequest request)
+        {
+            var response = _client.UpdateEmployee(request);
+
+            return response;
+        }
+
+        [HttpDelete("deleteEmployee")]
+        public DeleteResponse DeleteEmployee(DeleteRequest request)
+        {
+            var response = _client.DeleteEmployee(request);
 
             return response;
         }
